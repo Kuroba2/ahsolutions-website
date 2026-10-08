@@ -24,10 +24,10 @@
     </header>
     <main id="main" class="wrap">
       <section class="intro">
-        <div class="eyebrow">AH BRIEFFLOW / INTERACTIVE PROTOTYPE v0.1</div>
+        <div class="eyebrow">AH BRIEFFLOW / Interactive Demo</div>
         <h1>Turn a client brief into a clearer starting point.</h1>
-        <p>Paste your own software project brief. This prototype extracts candidate requirements, suggests clarification questions, and assembles an editable proposal outline.</p>
-        <div class="notice" role="note"><strong>What this is:</strong> A working, browser-only <strong>rule-based prototype</strong>. No Claude API or LLM is connected yet. Outputs are suggestions, not verified project requirements or estimates. Text stays in your browser in this version; no uploads or server calls are made.</div>
+        <p>Paste your own software project brief. This prototype categorizes candidate statements, suggests clarification questions, and assembles an editable proposal outline. It is a limited rules-based baseline.</p>
+        <div class="notice" role="note"><strong>What this is:</strong> A working <strong>rule-based browser prototype</strong>, not a Claude-powered agent. Brief text is processed locally by this page’s JavaScript and is not submitted to an AH Solutions backend or AI provider. Normal requests for website assets and hosting analytics may still occur. Outputs need human review.</div>
       </section>
       <section class="workspace" aria-label="Brief analyzer">
         <div class="panel">
@@ -42,8 +42,19 @@
           <div class="panel-header"><span class="step">02</span><h2>Review output</h2></div>
           <div id="empty" class="empty"><span class="empty-icon">⌁</span><h3>Ready when you are.</h3><p>Enter a brief and choose “Structure brief” to generate a reviewable draft based on its actual text.</p></div>
           <div id="results" hidden>
-            <div class="result-label">Candidate requirements <span id="req-count"></span></div>
+            <p id="coverage" class="coverage-note"></p>
+            <div class="result-label">Functional requirements <span id="req-count"></span></div>
             <ol id="requirements"></ol>
+            <div class="result-label">Non-functional requirements <span id="nfr-count"></span></div>
+            <ul id="nonfunctional"></ul>
+            <div class="result-label">Project context <span id="context-count"></span></div>
+            <ul id="context"></ul>
+            <div class="result-label">Constraints <span id="constraint-count"></span></div>
+            <ul id="constraints"></ul>
+            <div class="result-label">Out of scope <span id="out-count"></span></div>
+            <ul id="outofscope"></ul>
+            <div class="result-label">Open decisions <span id="open-count"></span></div>
+            <ul id="openitems"></ul>
             <div class="result-label">Questions to clarify</div>
             <ul id="questions"></ul>
             <div class="result-label">Editable proposal outline</div>
@@ -55,7 +66,7 @@
         </div>
       </section>
       <section class="roadmap" aria-labelledby="next-title"><div><span class="step">03</span><h2 id="next-title">What comes next?</h2></div><p>The planned Claude API integration would add deeper document understanding, multi-step reasoning and tool use. The first milestone is to compare that future agent against this simple baseline on representative briefs, with a human reviewing every output.</p></section>
-      <footer class="footer"><span>AH BriefFlow by AH Solutions · Prototype v0.1</span><a href="mailto:anhdt@ahsolutions.tech">anhdt@ahsolutions.tech</a><span>© 2026 AH Solutions</span></footer>
+      <footer class="footer"><span>AH BriefFlow by AH Solutions · Interactive Demo</span><a href="mailto:anhdt@ahsolutions.tech">anhdt@ahsolutions.tech</a><span>© 2026 AH Solutions</span></footer>
     </main>
   </body>
 </html>
