@@ -11,6 +11,23 @@ export function testRules(): void {
   if (out.outOfScope.length !== 1 || out.constraints.length !== 2 || out.functional.length !== 1) {
     throw Error('Constraints and exclusion categories incorrect ' + JSON.stringify(out));
   }
+  const variants: Array<[string, string]> = [
+    ['Launch in 6 weeks.', 'constraints'],
+    ['Do not build a mobile app.', 'outOfScope'],
+    ['Ra mắt sau 6 tuần.', 'constraints'],
+    ['Không xây dựng ứng dụng di động.', 'outOfScope'],
+    ['Khách hàng chọn dịch vụ và nhận email xác nhận.', 'functional'],
+    ['Deadline: 6 weeks.', 'constraints'],
+    ['No mobile app.', 'outOfScope'],
+    ['We are considering Stripe.', 'openDecisions'],
+    ['The website should support English and Vietnamese.', 'nonfunctional'],
+  ];
+  for (const [sentence, expected] of variants) {
+    const actual = analyzeBrief(sentence).categories;
+    if (!actual[expected as keyof typeof actual].includes(sentence)) {
+      throw Error(`Expected ${expected} for: ${sentence}; got ${JSON.stringify(actual)}`);
+    }
+  }
   const longBrief = Array.from({length:85},(_,i)=>`Feature ${i} should allow booking.`).join('\n');
   const limited = analyzeBrief(longBrief);
   if (!limited.truncated || limited.analyzedStatements !== 80 || limited.totalStatements !== 85) throw Error('80 sentence cap not disclosed correctly');
