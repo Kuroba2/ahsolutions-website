@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a1019" />
+    <title>Interactive Brief Prototype — AH BriefFlow | AH Solutions</title>
+    <meta name="description" content="Try AH BriefFlow's first working browser-based prototype. Turn your own project brief into candidate requirements, clarification questions and an editable proposal outline. Claude integration is planned, not live." />
+    <link rel="canonical" href="https://ahsolutions.tech/demo/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AH BriefFlow — Interactive Prototype" />
+    <meta property="og:description" content="A working, rule-based browser prototype for structuring software project briefs. Not yet powered by Claude." />
+    <meta property="og:url" content="https://ahsolutions.tech/demo/" />
+    <meta property="og:image" content="https://ahsolutions.tech/og-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" src="/src/demo.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to workspace</a>
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="Back to AH Solutions homepage"><span class="brand-mark">AH</span><span>AH Solutions</span></a>
+      <a href="/" class="return">← Back to company website</a>
+    </header>
+    <main id="main" class="wrap">
+      <section class="intro">
+        <div class="eyebrow">AH BRIEFFLOW / INTERACTIVE PROTOTYPE v0.2</div>
+        <h1>Turn a client brief into a clearer starting point.</h1>
+        <p>Paste your own software project brief. This prototype categorizes candidate statements, suggests clarification questions, and assembles an editable proposal outline. It is a limited rules-based baseline.</p>
+        <div class="notice" role="note"><strong>What this is:</strong> A working <strong>rule-based browser prototype</strong>, not a Claude-powered agent. Brief text is processed locally by this page’s JavaScript and is not submitted to an AH Solutions backend or AI provider. Normal requests for website assets and hosting analytics may still occur. Outputs need human review.</div>
+      </section>
+      <section class="workspace" aria-label="Brief analyzer">
+        <div class="panel">
+          <div class="panel-header"><span class="step">01</span><h2>Input brief</h2></div>
+          <label for="brief">Project request or client notes</label>
+          <textarea id="brief" rows="13" maxlength="12000" spellcheck="true" placeholder="Paste a real or sample software project brief here. Avoid client-sensitive or personal data."></textarea>
+          <div class="small-row"><span id="count">0 / 12,000 characters</span><button class="text-button" id="sample" type="button">Load clearly labeled fictional example</button></div>
+          <div class="actions"><button type="button" class="primary" id="analyze">Structure brief →</button><button type="button" class="secondary" id="clear">Clear</button></div>
+          <p class="hint">Tip: Include what users should be able to do, integrations, constraints, and deadlines if known. Do not paste confidential documents.</p>
+        </div>
+        <div class="panel result-panel" aria-live="polite" aria-atomic="false">
+          <div class="panel-header"><span class="step">02</span><h2>Review output</h2></div>
+          <div id="empty" class="empty"><span class="empty-icon">⌁</span><h3>Ready when you are.</h3><p>Enter a brief and choose “Structure brief” to generate a reviewable draft based on its actual text.</p></div>
+          <div id="results" hidden>
+            <p id="coverage" class="coverage-note"></p>
+            <div class="result-label">Functional requirements <span id="req-count"></span></div>
+            <ol id="requirements"></ol>
+            <div class="result-label">Non-functional requirements <span id="nfr-count"></span></div>
+            <ul id="nonfunctional"></ul>
+            <div class="result-label">Project context <span id="context-count"></span></div>
+            <ul id="context"></ul>
+            <div class="result-label">Constraints <span id="constraint-count"></span></div>
+            <ul id="constraints"></ul>
+            <div class="result-label">Out of scope <span id="out-count"></span></div>
+            <ul id="outofscope"></ul>
+            <div class="result-label">Open decisions <span id="open-count"></span></div>
+            <ul id="openitems"></ul>
+            <div class="result-label">Questions to clarify</div>
+            <ul id="questions"></ul>
+            <div class="result-label">Editable proposal outline</div>
+            <label class="sr-only" for="proposal">Edit the proposal draft</label>
+            <textarea id="proposal" rows="14"></textarea>
+            <div class="actions"><button type="button" class="primary" id="download">Download .md</button><button type="button" class="secondary" id="copy">Copy draft</button></div>
+            <p id="message" class="status" role="status"></p>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap" aria-labelledby="next-title"><div><span class="step">03</span><h2 id="next-title">What comes next?</h2></div><p>The planned Claude API integration would add deeper document understanding, multi-step reasoning and tool use. The first milestone is to compare that future agent against this simple baseline on representative briefs, with a human reviewing every output.</p></section>
+      <footer class="footer"><span>AH BriefFlow by AH Solutions · Prototype v0.2</span><a href="mailto:anhdt@ahsolutions.tech">anhdt@ahsolutions.tech</a><span>© 2026 AH Solutions</span></footer>
+    </main>
+  </body>
+</html>
